@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import { createStore } from "vuex";
 import "./assets/styles/index.scss";
 import App from "./App.vue";
-import { EGameType } from "./interfaces/global.interface.ts";
+import { EGameType } from "./interfaces/global.interface";
 
 const store = createStore({
   state() {
@@ -38,4 +38,4 @@ const store = createStore({
 
 const app = createApp(App).mount("#app");
 // createApp(App).mount("#app");
-app.use(store);
+// app.use(store);
