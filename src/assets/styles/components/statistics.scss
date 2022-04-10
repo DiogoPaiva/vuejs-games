@@ -1,0 +1,32 @@
+.statistics {
+  background-color: $white;
+  min-height: 420px;
+  padding: 5%;
+  .inner-container {
+    h3 {
+      text-align: center;
+      font-family: $font-bold;
+      font-size: $size-heading;
+    }
+    .description {
+      text-align: center;
+      font-family: $font-regular;
+      font-size: $size-subHeading;
+    }
+    .center-area {
+      text-align: center;
+      .block {
+        display: inline-block;
+        width: 50% !important;
+      }
+      .game-victories {
+        .player-block {
+          .player-name {
+            font-family: $font-regular;
+            font-size: 26px;
+          }
+        }
+      }
+    }
+  }
+}

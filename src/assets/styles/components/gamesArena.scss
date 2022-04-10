@@ -1,0 +1,90 @@
+.games-arena {
+  background-color: $light-grey;
+  min-height: 480px;
+  padding: 5%;
+  .title {
+    font-family: $font-bold;
+    font-size: 32px;
+    text-align: center;
+  }
+  .description {
+    font-family: $font-regular;
+    font-size: 32px;
+    text-align: center;
+  }
+  .button-tabs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 100%;
+    .button-tab {
+      text-align: center;
+      background-color: $white;
+      padding: 8px;
+      border-radius: 5px;
+      border: 0 none;
+      min-width: 150px;
+      margin: 10px;
+      color: $black;
+      font-family: $font-regular;
+      font-size: 24px;
+      transition: all 300ms;
+      box-shadow: 0px 0px 3px 1px #cfcfcf;
+      cursor: pointer;
+      &.active {
+        background-color: $blue;
+        color: $white;
+        box-shadow: 0px 0px 3px 1px #9c9c9c;
+      }
+    }
+  }
+  .game-area-container {
+    width: 100%;
+
+    .center-areas {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      align-items: center;
+      justify-content: space-evenly;
+      .player-number {
+        width: auto;
+      }
+      .game-area {
+        text-align: center;
+        width: 650px;
+        height: 600px;
+        background-color: $white;
+        border: 1px solid #333;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        .game {
+          text-align: center;
+        }
+      }
+      .player-number {
+        text-align: center;
+        .label {
+          display: block;
+          font-family: $font-bold;
+          font-size: 30px;
+        }
+        .number {
+          display: block;
+          font-family: $font-regular;
+          font-size: 80px;
+        }
+      }
+    }
+    .countdown {
+      font-family: $font-regular;
+      font-size: 34px;
+      text-align: center;
+      margin-top: 50px;
+    }
+  }
+}

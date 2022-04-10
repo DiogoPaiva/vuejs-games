@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: $grey;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  &.scrolled {
+    opacity: 85%;
+  }
+  .inner-container {
+    display: flex;
+    justify-content: space-between;
+    .logo {
+      width: 210px;
+      height: auto;
+      .logo-img {
+        width: 100%;
+      }
+    }
+    .info-right {
+      font-size: 22px;
+    }
+  }
+}
