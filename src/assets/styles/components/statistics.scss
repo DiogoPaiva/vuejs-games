@@ -6,25 +6,117 @@
     h3 {
       text-align: center;
       font-family: $font-bold;
+      font-weight: normal;
       font-size: $size-heading;
+      color: $dark-grey;
+      margin-bottom: 20px;
     }
     .description {
       text-align: center;
       font-family: $font-regular;
       font-size: $size-subHeading;
+      color: $dark-grey;
+      margin-bottom: 80px;
     }
     .center-area {
       text-align: center;
       .block {
         display: inline-block;
         width: 50% !important;
+        vertical-align: top;
+        h3 {
+          font-size: $size-subHeading;
+          color: $dark-grey;
+        }
       }
       .game-victories {
-        .player-block {
-          .player-name {
-            font-family: $font-regular;
-            font-size: 26px;
+        .inner-players-block {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-content: center;
+          .player-block {
+            .player-name {
+              font-family: $font-regular;
+              font-size: $size-heading;
+            }
+            .inner-percent-stats {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              align-content: center;
+              margin-top: 10px;
+              .percent-stats {
+                margin-left: 10px;
+                margin-right: 10px;
+
+                .percent-value {
+                  height: 60px;
+                  width: 60px;
+                  background-color: $grey97;
+                  color: $white;
+                  font-family: $font-bold;
+                  font-weight: normal;
+                  font-size: $size-text;
+                  border-radius: 50%;
+                  display: flex;
+                  flex-direction: column;
+                  align-content: center;
+                  justify-content: center;
+                  letter-spacing: -1px;
+                  margin-bottom: 10px;
+                }
+                .percent-type {
+                  text-align: center;
+                  font-family: $font-regular;
+                  font-size: $size-text;
+                }
+              }
+            }
           }
+        }
+      }
+      .played-matches {
+        .list-of-matchs {
+          padding: 0;
+          margin: 0;
+          li {
+            list-style: none;
+            display: inline-block;
+            margin-right: 5px;
+            background-color: $white;
+            border: 2px solid $grey97;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            vertical-align: top;
+            &.played {
+              background-color: $grey97;
+            }
+          }
+        }
+        .list-of-games {
+          padding: 0;
+          margin: 0;
+          li {
+            list-style: none;
+            display: inline-block;
+            margin-right: 8px;
+            background-color: $white;
+            border: 2px solid $grey97;
+            height: 25px;
+            width: 25px;
+            padding: 3px;
+            vertical-align: top;
+            text-align: center;
+            font-size: $size-text;
+          }
+        }
+      }
+      .total-time {
+        .time-count {
+          font-family: $font-regular;
+          font-size: $size-heading;
         }
       }
     }

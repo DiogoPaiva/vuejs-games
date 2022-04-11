@@ -4,6 +4,7 @@ $black: #000;
 $light-grey: #f6f8f9;
 $grey: #d8d8d8;
 $medium-grey: #c4bebe;
+$grey97: #979797;
 $dark-grey: #2c2e30;
 $blue: #37a8ee;
 $green: #00dca4;
@@ -18,7 +19,12 @@ $font-bold: "glacialindifference-bold", $font-base;
 $font-italic: "glacialindifference-italic", $font-base;
 
 // Font Sizes
-$size-heading: 40px;
-$size-subHeading: 30px;
-$size-text: 26px;
-$size-text-small: 22px;
+$size-huge: 80px;
+$size-heading: 32px;
+$size-subHeading: 22px;
+$size-big-text: 30px;
+$size-text: 23px;
+$size-text-small: 20px;
+
+// Block Sizes
+$header-height: 100px;

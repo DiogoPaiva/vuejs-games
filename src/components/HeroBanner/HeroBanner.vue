@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       name: "Diogo Paiva",
-      age: "30",
+      age: "44",
       location: "Aveiro",
       occupation: "Software Engineer",
       about:

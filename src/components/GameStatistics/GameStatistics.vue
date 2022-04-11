@@ -6,26 +6,32 @@
       <div class="center-area">
         <div class="block game-victories">
           <h3>Game victories %</h3>
-          <div class="player-block">
-            <div class="player-name">Player 1</div>
-            <div class="percent-stats">
-              <div class="percent-value">0%</div>
-              <div class="percent-type">W</div>
+          <div class="inner-players-block">
+            <div class="player-block">
+              <div class="player-name">Player 1</div>
+              <div class="inner-percent-stats">
+                <div class="percent-stats">
+                  <div class="percent-value">100%</div>
+                  <div class="percent-type">W</div>
+                </div>
+                <div class="percent-stats">
+                  <div class="percent-value">10%</div>
+                  <div class="percent-type">L</div>
+                </div>
+              </div>
             </div>
-            <div class="percent-stats">
-              <div class="percent-value">0%</div>
-              <div class="percent-type">L</div>
-            </div>
-          </div>
-          <div class="player-block">
-            <div class="player-name">Player 2</div>
-            <div class="percent-stats">
-              <div class="percent-value">0%</div>
-              <div class="percent-type">W</div>
-            </div>
-            <div class="percent-stats">
-              <div class="percent-value">0%</div>
-              <div class="percent-type">L</div>
+            <div class="player-block">
+              <div class="player-name">Player 2</div>
+              <div class="inner-percent-stats">
+                <div class="percent-stats">
+                  <div class="percent-value">0%</div>
+                  <div class="percent-type">W</div>
+                </div>
+                <div class="percent-stats">
+                  <div class="percent-value">0%</div>
+                  <div class="percent-type">L</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
