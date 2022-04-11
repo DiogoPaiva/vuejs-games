@@ -4,6 +4,10 @@ body {
   font-family: $font-regular;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: $dark-grey;
+}
+h3 {
+  margin: 0;
 }
 
 .inner-container {
@@ -31,9 +35,11 @@ body {
 
 .font-bold {
   font-family: $font-bold;
+  font-weight: normal;
 }
 .font-italic {
   font-family: $font-italic;
+  font-weight: normal;
 }
 
 .main-body {
