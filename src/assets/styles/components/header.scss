@@ -29,3 +29,18 @@
     }
   }
 }
+@media screen and (max-width: 600px) {
+  .header {
+    height: 85px;
+    .inner-container {
+      .logo {
+        width: 170px;
+        margin-left: 10px;
+      }
+      .info-right {
+        font-size: 15px;
+        margin-right: 10px;
+      }
+    }
+  }
+}

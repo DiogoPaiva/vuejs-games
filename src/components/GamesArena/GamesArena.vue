@@ -21,7 +21,7 @@
       </div>
       <div class="game-area-container">
         <div class="center-areas">
-          <div class="player-number">
+          <div class="player-number desktop">
             <span class="label">Player</span>
             <span class="number">1</span>
           </div>
@@ -33,12 +33,22 @@
               Este é o jogo 4 in a Row! Clica em começar!!!
             </div>
           </div>
-          <div class="player-number">
+          <div class="player-number desktop">
             <span class="label">Player</span>
             <span class="number">2</span>
           </div>
         </div>
-        <div class="countdown">00:00:00</div>
+        <div class="countdown">
+          <div class="player-number mobile">
+            <span class="label">Player</span>
+            <span class="number">1</span>
+          </div>
+          <div class="timer">00:00:00</div>
+          <div class="player-number mobile">
+            <span class="label">Player</span>
+            <span class="number">2</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
