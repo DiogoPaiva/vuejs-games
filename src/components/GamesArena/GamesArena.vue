@@ -12,6 +12,7 @@
           Tic tac toe
         </button>
         <button
+          disabled
           @click.prevent="selectTab('4inrow')"
           :class="{ active: selectedGame === '4inrow' }"
           class="button-tab"
@@ -27,7 +28,7 @@
           </div>
           <div class="game-area">
             <div v-if="selectedGame === 'tictac'" class="game">
-              Este é o jogo Tic Tac! Clica em começar!!!
+              <TicTacToe />
             </div>
             <div v-if="selectedGame === '4inrow'" class="game">
               Este é o jogo 4 in a Row! Clica em começar!!!
@@ -53,10 +54,15 @@
     </div>
   </div>
 </template>
+<script lang="ts">
+import { defineComponent } from "vue";
+import TicTacToe from "../TicTacToe/TicTacToeGame.vue";
 
-<script>
-export default {
+export default defineComponent({
   name: "GamesArena",
+  components: {
+    TicTacToe,
+  },
   props: {},
   data() {
     return {
@@ -69,5 +75,5 @@ export default {
       console.log("tab-selected: ", tabName);
     },
   },
-};
+});
 </script>
