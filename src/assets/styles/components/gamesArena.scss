@@ -60,6 +60,9 @@
       justify-content: space-evenly;
       .player-number {
         width: auto;
+        &.active {
+          color: $green;
+        }
       }
       .game-area {
         text-align: center;
@@ -81,6 +84,9 @@
         text-align: center;
         &.desktop {
           display: block;
+        }
+        &.active {
+          color: $green;
         }
 
         .label {
@@ -107,6 +113,9 @@
       .player-number {
         &.mobile {
           display: none;
+        }
+        &.active {
+          color: $green;
         }
         .label {
           display: block;
@@ -148,6 +157,9 @@
           &.desktop {
             display: none;
           }
+          &.active {
+            color: $green;
+          }
         }
         .game-area {
           order: 1;
@@ -161,6 +173,9 @@
         .player-number {
           &.mobile {
             display: block;
+          }
+          &.active {
+            color: $green;
           }
           .label {
             font-size: 22px;

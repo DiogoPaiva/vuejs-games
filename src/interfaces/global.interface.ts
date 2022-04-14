@@ -17,4 +17,9 @@ export interface IGamePlayed {
   duration: Number | String;
   gameStatus: EGameStatus;
   currentPlayer: String;
+  nextPlayer: String;
+}
+export interface IPlayer {
+  playerName: String;
+  playerValue: String;
 }

@@ -38,7 +38,6 @@ export default defineComponent({
   },
   methods: {
     onScroll() {
-      console.log("this.lastPosition", this.lastPosition);
       console.log("window.scrollY", window.scrollY);
     },
     created() {

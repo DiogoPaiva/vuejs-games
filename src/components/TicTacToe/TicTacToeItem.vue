@@ -1,5 +1,11 @@
 <template>
-  <button class="square-item" @click="click">{{ value }}</button>
+  <button
+    class="square-item"
+    @click="play"
+    :class="{ green: value === 'O', red: value === 'X' }"
+  >
+    {{ value }}
+  </button>
 </template>
 
 <script lang="ts">
@@ -11,8 +17,8 @@ export default defineComponent({
     value: String,
   },
   methods: {
-    click() {
-      this.$emit("click");
+    play() {
+      this.$emit("play");
     },
   },
 });
@@ -29,5 +35,13 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   background-color: $white;
+  font-size: 90px;
+  font-weight: bold;
+  &.red {
+    color: $red;
+  }
+  &.green {
+    color: $green;
+  }
 }
 </style>
