@@ -22,11 +22,12 @@
       text-align: center;
       .block {
         display: inline-block;
-        width: 50% !important;
+        width: 50%;
         vertical-align: top;
         h3 {
-          font-size: $size-subHeading;
+          font-size: $size-heading-small;
           color: $dark-grey;
+          margin-bottom: 30px;
         }
       }
       .game-victories {
@@ -77,6 +78,9 @@
         }
       }
       .played-matches {
+        .inner-block {
+          margin-bottom: 30px;
+        }
         .list-of-matchs {
           padding: 0;
           margin: 0;
@@ -117,6 +121,75 @@
         .time-count {
           font-family: $font-regular;
           font-size: $size-heading;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .statistics {
+    .inner-container {
+      > h3 {
+        font-size: 28px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+      }
+      .description {
+        font-size: 18px;
+        margin-bottom: 50px;
+      }
+      .center-area {
+        .block {
+          width: 100%;
+          margin-bottom: 45px;
+          &:last-child {
+            margin-bottom: 20px;
+          }
+          h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+          }
+        }
+        .total-time {
+          .time-count {
+            font-size: 20px;
+          }
+        }
+        .played-matches {
+          .inner-block {
+            margin-bottom: 45px;
+            &:last-child {
+              margin-bottom: 0;
+            }
+            .list-of-games {
+              li {
+                height: 20px;
+                width: 20px;
+                font-size: 17px;
+              }
+            }
+          }
+        }
+        .game-victories {
+          .inner-players-block {
+            .player-block {
+              .player-name {
+                font-size: 22px;
+              }
+              .inner-percent-stats {
+                .percent-stats {
+                  .percent-value {
+                    height: 50px;
+                    width: 50px;
+                    font-size: 18px;
+                  }
+                  .percent-type {
+                    font-size: 19px;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

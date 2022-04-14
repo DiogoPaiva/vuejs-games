@@ -50,20 +50,29 @@
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .hero-banner {
+    min-height: 350px;
+    padding-bottom: 20px;
     .inner-container {
       flex-direction: column;
       .avatar {
+        height: auto;
         .round-avatar {
-          width: 160px;
-          height: 160px;
+          width: 140px;
+          height: 140px;
         }
       }
       .user-info {
         text-align: center;
         .highlight {
           font-size: $size-text;
+          margin-bottom: 15px;
+          margin-top: 30px;
+        }
+        .text-inline {
+          font-size: 18px;
+          line-height: 26px;
         }
       }
       .right-info {

@@ -16,8 +16,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "MainHeader",
   props: {
     title: {
@@ -36,8 +38,7 @@ export default {
   },
   methods: {
     onScroll() {
-      console.log("this.lastPosition", this.lastPosition);
-      console.log("window.scrollY", window.scrollTop);
+      console.log("window.scrollY", window.scrollY);
     },
     created() {
       window.addEventListener("scroll", this.onScroll);
@@ -46,5 +47,5 @@ export default {
       window.removeEventListener("scroll", this.onScroll);
     },
   },
-};
+});
 </script>

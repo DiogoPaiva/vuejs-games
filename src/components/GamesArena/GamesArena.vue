@@ -12,6 +12,7 @@
           Tic tac toe
         </button>
         <button
+          disabled
           @click.prevent="selectTab('4inrow')"
           :class="{ active: selectedGame === '4inrow' }"
           class="button-tab"
@@ -21,43 +22,72 @@
       </div>
       <div class="game-area-container">
         <div class="center-areas">
-          <div class="player-number">
+          <div
+            class="player-number desktop"
+            :class="{ active: player.name === 'Player1' }"
+          >
             <span class="label">Player</span>
             <span class="number">1</span>
           </div>
           <div class="game-area">
             <div v-if="selectedGame === 'tictac'" class="game">
-              Este é o jogo Tic Tac! Clica em começar!!!
+              <TicTacToe @player="getPlayer" />
             </div>
-            <div v-if="selectedGame === '4inrow'" class="game">
-              Este é o jogo 4 in a Row! Clica em começar!!!
-            </div>
+            <div v-if="selectedGame === '4inrow'" class="game"></div>
           </div>
-          <div class="player-number">
+          <div
+            class="player-number desktop"
+            :class="{ active: player.name === 'Player2' }"
+          >
             <span class="label">Player</span>
             <span class="number">2</span>
           </div>
         </div>
-        <div class="countdown">00:00:00</div>
+        <div class="countdown">
+          <div
+            class="player-number mobile"
+            :class="{ active: player.name === 'Player1' }"
+          >
+            <span class="label">Player</span>
+            <span class="number">1</span>
+          </div>
+          <div class="timer">00:00:00</div>
+          <div
+            class="player-number mobile"
+            :class="{ active: player.name === 'Player2' }"
+          >
+            <span class="label">Player</span>
+            <span class="number">2</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
+<script lang="ts">
+import { defineComponent } from "vue";
+import TicTacToe from "../TicTacToe/TicTacToeGame.vue";
+import { IPlayer } from "../../interfaces/global.interface";
 
-<script>
-export default {
+export default defineComponent({
   name: "GamesArena",
+  components: {
+    TicTacToe,
+  },
   props: {},
   data() {
     return {
       selectedGame: "tictac",
+      player: {},
     };
   },
   methods: {
-    selectTab(tabName) {
+    selectTab(tabName: string) {
       this.selectedGame = tabName;
-      console.log("tab-selected: ", tabName);
+    },
+    getPlayer(player: IPlayer) {
+      this.player = player;
     },
   },
-};
+});
 </script>
