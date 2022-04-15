@@ -1,39 +1,55 @@
+import { calculatePercentage } from "@/helpers/rules";
+import { ICurrentGame, IGame } from "@/interfaces/global.interface";
+
+interface State {
+  allGames: IGame[];
+  currentGame: ICurrentGame;
+}
+
 export default {
   namespaced: true,
 
   state: {
-    currentGame: {},
-    allGames: [],
+    allGames: [] as IGame[],
+    currentGame: {} as ICurrentGame,
   },
-  getters: {},
-  mutations: {},
+  getters: {
+    playedMatches(state: State) {
+      return state.allGames.length;
+    },
+    gameHistory(state: State) {
+      return state.allGames.map((game) => {
+        return game.winPlayer === "Player1" ? "P1" : "P2";
+      });
+    },
+    gameVictories(state: State) {
+      const history = state.allGames.map((game) => {
+        return game.winPlayer === "Player1" ? "P1" : "P2";
+      });
+      const countP1 = history.filter((v) => v === "P1").length | 0;
+      const countP2 = history.filter((v) => v === "P2").length | 0;
+      const allGamesLength = state.allGames.length | 0;
+      return {
+        player1: {
+          w: calculatePercentage(allGamesLength, countP1),
+          l: 100 - calculatePercentage(allGamesLength, countP1),
+        },
+        player2: {
+          w: calculatePercentage(allGamesLength, countP2),
+          l: 100 - calculatePercentage(allGamesLength, countP2),
+        },
+      };
+    },
+  },
+  mutations: {
+    addLastPlayedGame(state: State, game: IGame) {
+      state.allGames.push(game);
+    },
+    updateCurrentGame(state: State, game: ICurrentGame) {
+      state.currentGame = {
+        ...state.currentGame,
+        ...game,
+      };
+    },
+  },
 };
-/*
- return {
-      currentGame: {
-        winPlayer: "Player 1",
-        gameType: EGameType.FOURINAROW,
-        duration: "333",
-      },
-      globalStats: {
-        totalTime: "0000",
-        playedMatches: [
-          {
-            winPlayer: "Player 1",
-            gameType: EGameType.FOURINAROW,
-            duration: "333",
-          },
-          {
-            winPlayer: "Player 1",
-            gameType: EGameType.TICTACTOE,
-            duration: "444",
-          },
-          {
-            winPlayer: "Player 2",
-            gameType: EGameType.TICTACTOE,
-            duration: "555",
-          },
-        ],
-      },
-    };
-    */

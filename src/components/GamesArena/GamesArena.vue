@@ -1,5 +1,30 @@
 <template>
   <div class="games-arena">
+    <div class="modal" v-if="this.openModal === true">
+      <div class="modal-container">
+        <div class="modal-inner-container">
+          <div class="message-area" v-if="this.player.winner === true">
+            <div class="winner-label">The winner is:</div>
+            <div class="winner-name">{{ this.player.name }}</div>
+            <div class="winner-mark-label">
+              Using
+              <span class="winner-mark-value">{{ this.player.value }}</span>
+            </div>
+          </div>
+          <div class="buttons-area">
+            <button
+              class="button-close"
+              @click.prevent="
+                $refs.tictactoeRef.resetGame();
+                this.openModal = false;
+              "
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="inner-container">
       <h3 class="title">Tic tac toe games</h3>
       <div class="description">Welcome to the best game in the world</div>
@@ -31,7 +56,7 @@
           </div>
           <div class="game-area">
             <div v-if="selectedGame === 'tictac'" class="game">
-              <TicTacToe @player="getPlayer" />
+              <TicTacToe @player="getPlayer" ref="tictactoeRef" />
             </div>
             <div v-if="selectedGame === '4inrow'" class="game"></div>
           </div>
@@ -79,6 +104,8 @@ export default defineComponent({
     return {
       selectedGame: "tictac",
       player: {},
+      openModal: false,
+      resetGame: false,
     };
   },
   methods: {
@@ -87,6 +114,9 @@ export default defineComponent({
     },
     getPlayer(player: IPlayer) {
       this.player = player;
+      if (player.winner === true) {
+        this.openModal = true;
+      }
     },
   },
 });
