@@ -52,14 +52,9 @@
           <div class="inner-block">
             <h3>Game history</h3>
             <ul class="list-of-games">
-              <li>P2</li>
-              <li>P1</li>
-              <li>P2</li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
+              <li v-for="(history, index) in gameVictories" :key="index">
+                {{ history }}
+              </li>
             </ul>
           </div>
         </div>
@@ -74,8 +69,13 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapGetters } from "vuex";
+
 export default defineComponent({
   name: "GameStatistics",
   props: {},
+  computed: {
+    ...mapGetters(["playedMatches", "gameHistory", "gameVictories"]),
+  },
 });
 </script>
