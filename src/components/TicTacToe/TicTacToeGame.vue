@@ -76,7 +76,7 @@ export default defineComponent({
         duration: "00",
         gameStatus: EGameStatus.WIN,
       };
-      this.$store.commit("gameModule/addLastPlayedGame", lastGame);
+      this.$store.commit("gameModule/addLastPlayedMatch", lastGame);
     },
     updateCurrentGameStore() {
       const thisGame = {
