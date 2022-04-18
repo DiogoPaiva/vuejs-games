@@ -22,6 +22,7 @@ export interface IPlayer {
   name: String;
   value: String;
   winner?: boolean;
+  gameStatus?: EGameStatus;
 }
 
 export interface ICurrentGame {

@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" :class="{ opacity: this.opacity === true }">
     <div class="inner-container">
       <div class="logo">
         <img
@@ -33,19 +33,24 @@ export default defineComponent({
   },
   data() {
     return {
-      scrolled: false,
+      opacity: false,
     };
   },
   methods: {
     onScroll() {
-      console.log("window.scrollY", window.scrollY);
+      if (window.scrollY >= 150) {
+        // Add opacity to header
+        this.opacity = true;
+      } else {
+        this.opacity = false;
+      }
     },
-    created() {
-      window.addEventListener("scroll", this.onScroll);
-    },
-    unmounted() {
-      window.removeEventListener("scroll", this.onScroll);
-    },
+  },
+  mounted() {
+    window.addEventListener("scroll", this.onScroll);
+  },
+  unmounted() {
+    window.removeEventListener("scroll", this.onScroll);
   },
 });
 </script>

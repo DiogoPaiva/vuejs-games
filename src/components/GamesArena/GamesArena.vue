@@ -3,10 +3,25 @@
     <div class="modal" v-if="this.openModal === true">
       <div class="modal-container">
         <div class="modal-inner-container">
-          <div class="message-area" v-if="this.player.winner === true">
-            <div class="winner-label">The winner is:</div>
-            <div class="winner-name">{{ this.player.name }}</div>
-            <div class="winner-mark-label">
+          <div
+            class="message-area"
+            v-if="
+              this.player.winner === true || this.player.gameStatus === 'DRAW'
+            "
+          >
+            <div v-if="this.player.winner === true" class="winner-label">
+              The winner is:
+            </div>
+            <div v-if="this.player.gameStatus === 'DRAW'" class="winner-label">
+              Its a
+            </div>
+            <div v-if="this.player.gameStatus === 'DRAW'" class="winner-name">
+              DRAW
+            </div>
+            <div v-if="this.player.winner === true" class="winner-name">
+              {{ this.player.name }}
+            </div>
+            <div v-if="this.player.winner === true" class="winner-mark-label">
               Using
               <span class="winner-mark-value">{{ this.player.value }}</span>
             </div>
@@ -56,7 +71,11 @@
           </div>
           <div class="game-area">
             <div v-if="selectedGame === 'tictac'" class="game">
-              <TicTacToe @player="getPlayer" ref="tictactoeRef" />
+              <TicTacToe
+                @player="getPlayer"
+                @counter="getCounter"
+                ref="tictactoeRef"
+              />
             </div>
             <div v-if="selectedGame === '4inrow'" class="game"></div>
           </div>
@@ -76,7 +95,7 @@
             <span class="label">Player</span>
             <span class="number">1</span>
           </div>
-          <div class="timer">00:00:00</div>
+          <div class="timer">{{ counter }}</div>
           <div
             class="player-number mobile"
             :class="{ active: player.name === 'Player2' }"
@@ -92,7 +111,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import TicTacToe from "../TicTacToe/TicTacToeGame.vue";
-import { IPlayer } from "../../interfaces/global.interface";
+import { EGameStatus, IPlayer } from "../../interfaces/global.interface";
 
 export default defineComponent({
   name: "GamesArena",
@@ -106,6 +125,7 @@ export default defineComponent({
       player: {},
       openModal: false,
       resetGame: false,
+      counter: 0,
     };
   },
   methods: {
@@ -114,9 +134,12 @@ export default defineComponent({
     },
     getPlayer(player: IPlayer) {
       this.player = player;
-      if (player.winner === true) {
+      if (player.winner === true || player.gameStatus === EGameStatus.DRAW) {
         this.openModal = true;
       }
+    },
+    getCounter(counter: number) {
+      this.counter = counter;
     },
   },
 });

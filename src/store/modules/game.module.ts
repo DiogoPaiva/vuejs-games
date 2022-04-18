@@ -59,19 +59,17 @@ export default {
     addLastPlayedMatch(state: State, game: IGame) {
       state.matches.push(game);
       if (state.matches && state.matches.length === 5) {
-        console.log("tem 5 matches");
         // Check for the winner best out of five matches
         const P1Wins = state.matches.filter(
           (match) => match.winPlayer === "Player1"
         ).length;
-        console.log("P1Wins ganhou: ", P1Wins);
+
         const P2Wins = state.matches.filter(
           (match) => match.winPlayer === "Player2"
         ).length;
-        console.log("P2Wins ganhou: ", P2Wins);
+
         const winner = P1Wins > P2Wins ? "Player1" : "Player2";
 
-        console.log("O vencedor foi: ", winner);
         // Add  Winner to games array
         state.allGames.push({
           winPlayer: winner,
