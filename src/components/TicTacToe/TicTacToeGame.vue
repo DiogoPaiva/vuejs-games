@@ -43,7 +43,6 @@ export default defineComponent({
   },
   watch: {
     startCounter() {
-      console.log("Passou no watcher", this.startCounter);
       if (this.startCounter === true) {
         this.counter = setInterval(() => {
           this.duration += 1;
@@ -56,20 +55,20 @@ export default defineComponent({
   },
   methods: {
     resetCounter() {
-      this.startCounter = false;
       this.duration = 0;
-      this.counter = 0;
-
+      this.startCounter = false;
       clearInterval(this.counter);
+      this.$emit("counter", this.duration);
     },
     play(index: any) {
       // Prevent altering the same boardgame square, return if it has a value
       if (this.gameboard[index]) {
         return;
       }
-      this.startCounter = true;
 
-      console.log("Duration: ", this.duration);
+      // Start Counting
+      this.startCounter = true;
+      // Set player move to the index cell on board
       this.gameboard[index] = this.player.value;
 
       nextTick(() => {

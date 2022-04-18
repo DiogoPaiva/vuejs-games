@@ -68,7 +68,7 @@
         </div>
         <div class="block total-time">
           <h3>Total Time</h3>
-          <div class="time-count">{{ getTime }}</div>
+          <div class="time-count">{{ totalTime }}</div>
         </div>
       </div>
     </div>
@@ -89,6 +89,7 @@ export default defineComponent({
       "playedMatches",
       "gameHistory",
       "gameVictories",
+      "totalTime",
     ]),
     getTime() {
       return getTimeFormat(3700);

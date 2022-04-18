@@ -54,6 +54,9 @@ export default {
         },
       };
     },
+    totalTime(state: State) {
+      return state.allGames.reduce((a, b) => a + b.duration, 0);
+    },
   },
   mutations: {
     addLastPlayedMatch(state: State, game: IGame) {
@@ -69,13 +72,17 @@ export default {
         ).length;
 
         const winner = P1Wins > P2Wins ? "Player1" : "Player2";
+        const sumTimeOfMatches = state.matches.reduce(
+          (a, b) => a + b.duration,
+          0
+        );
 
         // Add  Winner to games array
         state.allGames.push({
           winPlayer: winner,
           gameType: EGameType.TICTACTOE,
           markUsed: "",
-          duration: "",
+          duration: sumTimeOfMatches,
           gameStatus: EGameStatus.WIN,
         });
 
