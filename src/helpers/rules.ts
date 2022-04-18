@@ -1,4 +1,8 @@
-import { IPlayer } from "@/interfaces/global.interface";
+import {
+  IPlayer,
+  ICurrentGame,
+  EGameStatus,
+} from "@/interfaces/global.interface";
 
 export const arrayCombinations = [
   [0, 1, 2],
@@ -11,6 +15,7 @@ export const arrayCombinations = [
   [2, 4, 6],
 ];
 export function checkBoardWinner(gameBoard: any[], player: IPlayer): IPlayer {
+  // Win
   for (const indexes of arrayCombinations) {
     const [a, b, c] = indexes;
     if (
@@ -24,7 +29,14 @@ export function checkBoardWinner(gameBoard: any[], player: IPlayer): IPlayer {
       };
     }
   }
-
+  // Draw
+  if (gameBoard.every((square) => square !== null)) {
+    return {
+      name: "",
+      value: "",
+      gameStatus: EGameStatus.DRAW,
+    };
+  }
   return { ...player, winner: false };
 }
 

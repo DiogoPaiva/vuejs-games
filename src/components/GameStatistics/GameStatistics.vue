@@ -11,11 +11,15 @@
               <div class="player-name">Player 1</div>
               <div class="inner-percent-stats">
                 <div class="percent-stats">
-                  <div class="percent-value">100%</div>
+                  <div class="percent-value">
+                    {{ gameVictories.player1.w }}%
+                  </div>
                   <div class="percent-type">W</div>
                 </div>
                 <div class="percent-stats">
-                  <div class="percent-value">10%</div>
+                  <div class="percent-value">
+                    {{ gameVictories.player1.l }}%
+                  </div>
                   <div class="percent-type">L</div>
                 </div>
               </div>
@@ -24,11 +28,15 @@
               <div class="player-name">Player 2</div>
               <div class="inner-percent-stats">
                 <div class="percent-stats">
-                  <div class="percent-value">0%</div>
+                  <div class="percent-value">
+                    {{ gameVictories.player2.w }}%
+                  </div>
                   <div class="percent-type">W</div>
                 </div>
                 <div class="percent-stats">
-                  <div class="percent-value">0%</div>
+                  <div class="percent-value">
+                    {{ gameVictories.player2.l }}%
+                  </div>
                   <div class="percent-type">L</div>
                 </div>
               </div>
@@ -39,20 +47,20 @@
           <div class="inner-block">
             <h3>Played matches</h3>
             <ul class="list-of-matchs">
-              <li class="played"></li>
-              <li class="played"></li>
-              <li class="played"></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
+              <li
+                v-for="(match, index) in playedMatches"
+                :key="index"
+                :class="{
+                  played: match === 'played',
+                  empty: match === 'empty',
+                }"
+              ></li>
             </ul>
           </div>
           <div class="inner-block">
             <h3>Game history</h3>
             <ul class="list-of-games">
-              <li v-for="(history, index) in gameVictories" :key="index">
+              <li v-for="(history, index) in gameHistory" :key="index">
                 {{ history }}
               </li>
             </ul>
@@ -60,7 +68,7 @@
         </div>
         <div class="block total-time">
           <h3>Total Time</h3>
-          <div class="time-count">00:44:12</div>
+          <div class="time-count">{{ totalTime }}</div>
         </div>
       </div>
     </div>
@@ -70,12 +78,22 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
+import { getTimeFormat } from "../../helpers/timer";
 
 export default defineComponent({
+  namespaced: true,
   name: "GameStatistics",
   props: {},
   computed: {
-    ...mapGetters(["playedMatches", "gameHistory", "gameVictories"]),
+    ...mapGetters("gameModule", [
+      "playedMatches",
+      "gameHistory",
+      "gameVictories",
+      "totalTime",
+    ]),
+    getTime() {
+      return getTimeFormat(3700);
+    },
   },
 });
 </script>

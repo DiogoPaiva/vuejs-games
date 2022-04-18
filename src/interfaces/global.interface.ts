@@ -12,21 +12,22 @@ export enum EGameStatus {
 }
 
 export interface IGame {
-  winPlayer: String;
+  winPlayer: string;
   gameType: EGameType;
-  markUsed: String;
-  duration: Number | String;
+  markUsed: string;
+  duration: number;
   gameStatus: EGameStatus;
 }
 export interface IPlayer {
-  name: String;
-  value: String;
+  name: string;
+  value: string;
   winner?: boolean;
+  gameStatus?: EGameStatus;
 }
 
 export interface ICurrentGame {
-  currentPlayer: String;
-  nextPlayer: String;
-  duration: Number | String;
+  currentPlayer: string;
+  nextPlayer: string;
+  duration: number;
   gameStatus: EGameStatus;
 }

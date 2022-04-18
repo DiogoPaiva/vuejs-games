@@ -30,6 +30,9 @@ export default defineComponent({
   props: {},
   data() {
     return {
+      duration: 0,
+      startCounter: false,
+      counter: 0,
       player: {
         name: "",
         value: "X",
@@ -38,12 +41,34 @@ export default defineComponent({
       gameboard: Array(9).fill(null),
     };
   },
+  watch: {
+    startCounter() {
+      if (this.startCounter === true) {
+        this.counter = setInterval(() => {
+          this.duration += 1;
+          this.$emit("counter", this.duration);
+        }, 1000);
+      } else {
+        this.resetCounter();
+      }
+    },
+  },
   methods: {
+    resetCounter() {
+      this.duration = 0;
+      this.startCounter = false;
+      clearInterval(this.counter);
+      this.$emit("counter", this.duration);
+    },
     play(index: any) {
       // Prevent altering the same boardgame square, return if it has a value
       if (this.gameboard[index]) {
         return;
       }
+
+      // Start Counting
+      this.startCounter = true;
+      // Set player move to the index cell on board
       this.gameboard[index] = this.player.value;
 
       nextTick(() => {
@@ -59,6 +84,7 @@ export default defineComponent({
       this.$emit("player", winner);
       if (winner.winner === true) {
         this.addGameToStore(winner);
+        this.startCounter = false;
       }
     },
     resetGame() {
@@ -67,22 +93,23 @@ export default defineComponent({
       this.player.name = this.player.name === "Player1" ? "Player2" : "Player1";
       this.player.value = this.player.value === "X" ? "O" : "X";
       this.resetCurrentGameStore();
+      this.resetCounter();
     },
     addGameToStore(winner: IPlayer) {
       const lastGame = {
         winPlayer: winner.name,
         gameType: EGameType.TICTACTOE,
         markUsed: winner.value,
-        duration: "00",
+        duration: this.duration,
         gameStatus: EGameStatus.WIN,
       };
-      this.$store.commit("gameModule/addLastPlayedGame", lastGame);
+      this.$store.commit("gameModule/addLastPlayedMatch", lastGame);
     },
     updateCurrentGameStore() {
       const thisGame = {
         currentPlayer: this.player.name,
         nextPlayer: this.player.name === "Player1" ? "Player2" : "Player1",
-        duration: "00",
+        duration: this.duration,
         gameStatus: EGameStatus.ONGOING,
       };
       this.$store.commit("gameModule/updateCurrentGame", thisGame);
@@ -91,7 +118,7 @@ export default defineComponent({
       const thisGame = {
         currentPlayer: "",
         nextPlayer: "",
-        duration: "",
+        duration: 0,
         gameStatus: EGameStatus.START,
       };
       this.$store.commit("gameModule/updateCurrentGame", thisGame);
